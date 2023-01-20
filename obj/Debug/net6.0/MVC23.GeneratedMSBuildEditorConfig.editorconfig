@@ -51,8 +51,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/proyectos NET/MVC23/Views/Vehiculo/Busqueda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cQnVzcXVlZGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/proyectos NET/MVC23/Views/Vehiculo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyectos NET/MVC23/Views/Vehiculo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyectos NET/MVC23/Views/Vehiculo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyectos NET/MVC23/Views/Vehiculo/Seleccionar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cU2VsZWNjaW9uYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/proyectos NET/MVC23/Views/_ViewImports.cshtml]

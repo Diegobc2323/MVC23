@@ -1,0 +1,44 @@
+﻿@model MVC23.Models.SerieModelo
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<h1 align="center">@Model.Marca.NomMarca - @Model.NomSerie</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Matricula")
+            </th>
+            <th>
+                @Html.DisplayName("color")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehiculos) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matricula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie.ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

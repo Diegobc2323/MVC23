@@ -1,0 +1,42 @@
+﻿@model MVC23.Models.MarcaModelo
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<h1 align="center">@Model.NomMarca</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Marca")
+            </th>
+            <th>
+                @Html.DisplayName("Nombre Serie")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Series) {
+        <tr>
+            <td>
+                
+            </td>
+            <td>
+                <a asp-action="Listado" asp-controller="Vehiculo" asp-route-id="@item.ID">@item.NomSerie</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

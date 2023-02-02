@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MVC23.Models.SerieModelo>
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<h1>Listado</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Serie")
+            </th>
+            <th>
+                @Html.DisplayName("Marca")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Listado" asp-controller="Vehiculo" asp-route-id="@item.ID">@item.NomSerie</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca.NomMarca)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

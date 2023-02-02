@@ -18,8 +18,14 @@ namespace MVC23.Controllers
 
         public ActionResult Index()
         {
-            
-            return View(contexto.Marcas.ToList());
+            var lista = contexto.Marcas.ToList();
+            return View(lista);
+        }
+
+        public ActionResult List()
+        {
+            List<MarcaModelo> lista = contexto.Marcas.ToList();
+            return View(lista);
         }
 
         public ActionResult Desplegable()

@@ -23,6 +23,18 @@ namespace MVC23.Controllers
             return View(lista);
         }
 
+        public ActionResult List(int ID)
+        {
+            MarcaModelo marca = contexto.Marcas.Include("Series").FirstOrDefault(m => m.ID == ID);
+            return View(marca);
+        }
+
+        public ActionResult Listado()
+        {
+            List<SerieModelo> lista = contexto.Serie.Include("Marca").ToList();
+            return View(lista);
+        }
+
         // GET: SerieController/Details/5
         public ActionResult Details(int id)
         {

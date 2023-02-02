@@ -8,6 +8,8 @@
 
         public int MarcaID { get; set; }
 
+        public List<VehiculoModelo> Vehiculos { get; set; }
+
 
     }
 }

@@ -25,6 +25,12 @@ namespace MVC23.Controllers
             return View(lista);
         }
 
+        public ActionResult Listado(int ID)
+        {
+            ViewBag.lasMarcas = contexto.Marcas.ToList();
+            SerieModelo serie = contexto.Serie.Include("Vehiculos").FirstOrDefault(s => s.ID == ID);
+            return View(serie);
+        }
 
         public ActionResult Busqueda(String cadena="")
         {
@@ -43,7 +49,9 @@ namespace MVC23.Controllers
         // GET: VehiculoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            
+            VehiculoModelo vehiculo = contexto.Vehiculo.Include(v => v.Serie).FirstOrDefault(v => v.ID==id);
+            return View(vehiculo);
         }
 
         // GET: VehiculoController/Create
@@ -96,7 +104,8 @@ namespace MVC23.Controllers
         // GET: VehiculoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            VehiculoModelo vehiculo = contexto.Vehiculo.Include(v => v.Serie).FirstOrDefault(v => v.ID == id);
+            return View(vehiculo);
         }
 
         // POST: VehiculoController/Delete/5
@@ -106,6 +115,9 @@ namespace MVC23.Controllers
         {
             try
             {
+                VehiculoModelo vehiculo = contexto.Vehiculo.Find(id);
+                contexto.Vehiculo.Remove(vehiculo);
+                contexto.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

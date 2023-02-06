@@ -32,6 +32,15 @@ namespace MVC23.Controllers
             return View(serie);
         }
 
+        public ActionResult Listado2(int marcaID=1, int serieID=1)
+        {
+            ViewBag.lasMarcas = new SelectList(contexto.Marcas, "ID", "NomMarca", marcaID);
+            ViewBag.lasSeries = new SelectList(contexto.Serie.Where(s => s.MarcaID==marcaID), "ID", "NomSerie", serieID);
+
+            List<VehiculoModelo> vehiculos = contexto.Vehiculo.Where(v => v.SerieID == serieID).ToList();
+            return View(vehiculos);
+        }
+
         public ActionResult Busqueda(String cadena="")
         {
             ViewBag.cadena = cadena;

@@ -6,7 +6,7 @@ namespace MVC23.Models
     {
         public int ID { get; set; }
 
-        public string Tipo_Extra { get; set; }
+        public string TipoExtra { get; set; }
 
     }
 }

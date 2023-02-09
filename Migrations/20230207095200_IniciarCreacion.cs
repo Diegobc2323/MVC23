@@ -77,6 +77,33 @@ namespace MVC23.Migrations
                     table.PrimaryKey("PK_Extras", x => x.ID);
                 });
 
+            migrationBuilder.CreateTable(
+               name: "VehiculoExtras",
+               columns: table => new
+               {
+                   ID = table.Column<int>(type: "int", nullable: false)
+                       .Annotation("SqlServer:Identity", "1, 1"),
+                   VehiculoID = table.Column<int>(type: "int", nullable: false),
+                   ExtraID = table.Column<int>(type: "int", nullable: false)
+
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_VehiculoExtra", x => x.ID);
+                   table.ForeignKey(
+                       name: "FK_VehiculoExtra_Vehiculo_VehiculoID",
+                       column: x => x.VehiculoID,
+                       principalTable: "Vehiculo",
+                       principalColumn: "ID",
+                       onDelete: ReferentialAction.Cascade);
+                   table.ForeignKey(
+                      name: "FK_VehiculoExtra_Extra_ExtraID",
+                      column: x => x.ExtraID,
+                      principalTable: "Extras",
+                      principalColumn: "ID",
+                      onDelete: ReferentialAction.Cascade);
+               });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Serie_MarcaID",
                 table: "Serie",
@@ -86,6 +113,16 @@ namespace MVC23.Migrations
                 name: "IX_Vehiculo_SerieID",
                 table: "Vehiculo",
                 column: "SerieID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VehiculoID",
+                table: "VehiculoExtras",
+                column: "VehiculoID");
+
+            migrationBuilder.CreateIndex(
+               name: "IX_ExtraID",
+               table: "VehiculoExtras",
+               column: "ExtraID");
         }
 
         /// <inheritdoc />

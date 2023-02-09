@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "99flUgdWNfEFISy1wp86yzJ+9UqtmzuVMpweENhpA4PlSDVkdDyC7H7EFF1T3lvQukk0EfsHpBZITvySeKMJKQ==",
+  "dgSpecHash": "mhzEH38+6oYTQjTsSdfBD87Z3N8AwXecx3r4TpAIw2PHlBWL1RyF2+elmDh7vI0apRitbCcei377/dfQZ2vVUQ==",
   "success": true,
   "projectFilePath": "C:\\proyectos NET\\MVC23\\MVC23.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.1\\microsoft.entityframeworkcore.design.7.0.1.nupkg.sha512",
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.1\\microsoft.entityframeworkcore.relational.7.0.1.nupkg.sha512",
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.1\\microsoft.entityframeworkcore.sqlserver.7.0.1.nupkg.sha512",
+    "C:\\Users\\propietario\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.1\\microsoft.entityframeworkcore.tools.7.0.1.nupkg.sha512",
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\propietario\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

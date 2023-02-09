@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Data;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MVC23.Models;
 
 namespace MVC23.Controllers
@@ -9,7 +13,17 @@ namespace MVC23.Controllers
     public class VehiculoController : Controller
     {
 
+        public class VehiculoTotal
+        {
+            public string NomMarca { get; set; }
+            public string NomSerie { get; set; }
+            public string Matricula { get; set; }
+            public string color { get; set; }
+
+        }
+
         public Contexto contexto { get; }
+
 
         public VehiculoController(Contexto contexto)
         {
@@ -39,6 +53,12 @@ namespace MVC23.Controllers
 
             List<VehiculoModelo> vehiculos = contexto.Vehiculo.Where(v => v.SerieID == serieID).ToList();
             return View(vehiculos);
+        }
+
+        public ActionResult Listado3()
+        {
+            List<VehiculoTotal> lista = contexto.Database.SqlQuery<VehiculoTotal>($"getSeriesVehiculos").ToList();
+            return View(lista);
         }
 
         public ActionResult Busqueda(String cadena="")

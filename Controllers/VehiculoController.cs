@@ -55,9 +55,18 @@ namespace MVC23.Controllers
             return View(vehiculos);
         }
 
-        public ActionResult Listado3()
+        public ActionResult Listado3(String color="%")
         {
-            List<VehiculoTotal> lista = contexto.Database.SqlQuery<VehiculoTotal>($"getSeriesVehiculos").ToList();
+            var elColor = new SqlParameter("@ColorSel", color);
+            //List<VehiculoTotal> lista = contexto.VistaTotal.ToList();
+            List<VehiculoTotal> lista = contexto.VistaTotal.FromSql($"EXECUTE getVehiculosPorColor {elColor}").ToList();
+            //List<VehiculoTotal> lista = contexto.VistaTotal.FromSql($"SELECT Marcas.NomMarca, Serie.NomSerie, Vehiculo.Matricula, Vehiculo.color FROM Vehiculo JOIN Serie ON Serie.ID = Vehiculo.SerieID JOIN Marcas ON Marcas.ID = Serie.MarcaID WHERE Vehiculo.color like {color}").ToList();
+            return View(lista);
+        }
+
+        public ActionResult Listado4()
+        {
+            List<VehiculoTotal> lista = contexto.VistaTotal.FromSql($"EXECUTE getSeriesVehiculos").ToList();
             return View(lista);
         }
 

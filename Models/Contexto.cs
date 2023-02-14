@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using static MVC23.Controllers.VehiculoController;
 
 namespace MVC23.Models
 {
@@ -9,11 +10,23 @@ namespace MVC23.Models
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VehiculoTotal>(
+                eb => {
+                    eb.HasNoKey();
+                });
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<MarcaModelo> Marcas { get; set; }
 
         public DbSet<SerieModelo> Serie { get; set; }
 
         public DbSet<VehiculoModelo> Vehiculo { get; set; }
+
+        public DbSet<VehiculoTotal> VistaTotal { get; set; }
 
     }
 }

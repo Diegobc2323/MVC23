@@ -28,5 +28,9 @@ namespace MVC23.Models
 
         public DbSet<VehiculoTotal> VistaTotal { get; set; }
 
+        public DbSet<ExtraModelo> Extras { get; set; }
+
+        public DbSet<VehiculoExtraModelo> VehiculosExtras { get; set; }
+
     }
 }

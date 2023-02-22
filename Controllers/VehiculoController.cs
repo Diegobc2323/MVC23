@@ -35,6 +35,7 @@ namespace MVC23.Controllers
         public ActionResult Index()
         {
             ViewBag.lasMarcas = contexto.Marcas.ToList();
+            ViewBag.Extras = contexto.Extras.ToList();
             var lista = contexto.Vehiculo.Include(v => v.Serie).ToList();
             return View(lista);
         }
@@ -59,6 +60,8 @@ namespace MVC23.Controllers
         {
             var elColor = new SqlParameter("@ColorSel", color);
             //List<VehiculoTotal> lista = contexto.VistaTotal.ToList();
+            ViewBag.miColor = new SelectList(contexto.Vehiculo.Select(v => new { color = v.color }).Distinct(), "color", "color", color);
+            //                                                                                      ARRIBA      ID, VALUE, SELECTED
             List<VehiculoTotal> lista = contexto.VistaTotal.FromSql($"EXECUTE getVehiculosPorColor {elColor}").ToList();
             //List<VehiculoTotal> lista = contexto.VistaTotal.FromSql($"SELECT Marcas.NomMarca, Serie.NomSerie, Vehiculo.Matricula, Vehiculo.color FROM Vehiculo JOIN Serie ON Serie.ID = Vehiculo.SerieID JOIN Marcas ON Marcas.ID = Serie.MarcaID WHERE Vehiculo.color like {color}").ToList();
             return View(lista);
@@ -96,6 +99,7 @@ namespace MVC23.Controllers
         public ActionResult Create()
         {
             ViewBag.SerieID = new SelectList(contexto.Serie, "ID", "NomSerie");
+            ViewBag.VehiculoExtras = new MultiSelectList(contexto.Extras, "ID", "TipoExtra");
             return View();
         }
 
@@ -108,6 +112,14 @@ namespace MVC23.Controllers
             {
                 contexto.Vehiculo.Add(vehiculo);
                 contexto.SaveChanges();
+
+                foreach (var xtraID in vehiculo.ExtrasSeleccionados)
+                {
+                    var obj = new VehiculoExtraModelo() { ExtraID = xtraID, VehiculoID = vehiculo.ID };
+                    contexto.VehiculosExtras.Add(obj);
+                }
+
+                contexto.SaveChanges();
                 return RedirectToAction(nameof(Create));
             }
             catch
@@ -119,8 +131,15 @@ namespace MVC23.Controllers
         // GET: VehiculoController/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.SerieID = new SelectList(contexto.Serie, "ID", "NomSerie");
+            List<int> extrasSeleccionados = new List<int>();
+
+            extrasSeleccionados = (from ve in contexto.VehiculosExtras where (ve.VehiculoID==id) select ve.ExtraID).ToList();
             VehiculoModelo vehiculo = contexto.Vehiculo.Find(id);
+            //extrasSeleccionados = vehiculo.ExtrasSeleccionados;
+
+            ViewBag.SerieID = new SelectList(contexto.Serie, "ID", "NomSerie");
+            ViewBag.VehiculoExtras = new MultiSelectList(contexto.Extras, "ID", "TipoExtra", extrasSeleccionados);
+            
             return View(vehiculo);
         }
 

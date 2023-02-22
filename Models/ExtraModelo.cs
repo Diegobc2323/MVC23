@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC23.Models
 {
@@ -7,6 +8,6 @@ namespace MVC23.Models
         public int ID { get; set; }
 
         public string TipoExtra { get; set; }
-
+            
     }
 }

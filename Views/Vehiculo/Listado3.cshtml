@@ -6,25 +6,27 @@
 
 <h1>Listado3</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form method="get">
+    <select id="color" name="color" asp-items="ViewBag.miColor"></select>
+    <input type="submit" value="Send"/>
+
+</form>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayName("Matricula")
-            </th>
-            <th>
-                @Html.DisplayName("color")
-            </th>
+
             <th>
                 @Html.DisplayName("Marca")
             </th>
             <th>
                 @Html.DisplayName("Serie")
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayName("Matricula")
+            </th>
+            <th>
+                @Html.DisplayName("color")
+            </th>
         </tr>
     </thead>
     <tbody>

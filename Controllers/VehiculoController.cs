@@ -146,10 +146,32 @@ namespace MVC23.Controllers
         // POST: VehiculoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, VehiculoModelo vehiculoModificado)
         {
             try
             {
+
+                VehiculoModelo vehiculoActual = contexto.Vehiculo.FirstOrDefault(v => v.ID==id);
+                vehiculoActual.Matricula = vehiculoModificado.Matricula;
+                vehiculoActual.color = vehiculoModificado.color;
+                vehiculoActual.SerieID = vehiculoModificado.SerieID;
+                contexto.SaveChanges();
+
+                var extrasActuales = contexto.VehiculosExtras.Where(v => v.VehiculoID==id).ToList();
+
+                foreach (VehiculoExtraModelo vExtra in extrasActuales)
+                {
+
+                    contexto.VehiculosExtras.Remove(vExtra);
+                }
+
+                foreach (var xtraID in vehiculoModificado.ExtrasSeleccionados)
+                {
+                    var obj = new VehiculoExtraModelo() { ExtraID = xtraID, VehiculoID = vehiculoModificado.ID };
+                    contexto.VehiculosExtras.Add(obj);
+                }
+                contexto.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -36,7 +36,7 @@ namespace MVC23.Controllers
         {
             ViewBag.lasMarcas = contexto.Marcas.ToList();
             ViewBag.Extras = contexto.Extras.ToList();
-            var lista = contexto.Vehiculo.Include(v => v.Serie).ToList();
+            var lista = contexto.Vehiculo.Include(v => v.Serie).Include(v =>v.VehiculoExtras).ToList();
             return View(lista);
         }
 

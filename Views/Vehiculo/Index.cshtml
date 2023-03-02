@@ -24,6 +24,9 @@
             <th>
                 @Html.DisplayName("Marca")
             </th>
+            <th>
+                @Html.DisplayName("Extras")
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +43,17 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Serie.Marca.NomMarca)
+            </td>
+            <td>
+                <table>
+                @foreach (VehiculoExtraModelo extra in item.VehiculoExtras){
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => extra.Extra.TipoExtra)
+                        </td>
+                    </tr>
+                }
+                </table>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
